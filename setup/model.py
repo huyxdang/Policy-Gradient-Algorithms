@@ -10,6 +10,8 @@ def load_model(model_name: str):
 
 def load_tokenzier(model_name: str):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
     return tokenizer
 
 def load_model_and_tokenizer(model_name: str):
